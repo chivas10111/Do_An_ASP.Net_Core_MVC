@@ -1,0 +1,219 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Onl Shoe</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel=" stylesheet" href="~/Content/Style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    @using OnlShoe.Models
+
+    <style type="text/css">
+        body {
+            background-color: #F0F0F0;
+        }
+
+        .navbar-inverse {
+            background-color: #39B54A;
+            border-color: #39B54A;
+        }
+
+        .top_header {
+            background-color: black;
+            padding-left: 110px;
+            color: white;
+        }
+
+        .form-inline {
+            float: right;
+            padding-top: 10px;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+            font-size: x-large;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: white;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+            font-size: large;
+        }
+
+            .navbar-inverse .navbar-nav > li > a:hover {
+                color: black;
+            }
+
+        .navbar-brand {
+            color: cadetblue;
+        }
+
+        .spnoibat {
+            background-color: white;
+        }
+
+            .spnoibat h3 {
+                padding-left: 30px;
+            }
+
+        .giohang {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    @{
+        var u = Session["use"] as OnlShoe.Models.Nguoidung;
+    }
+    <div>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+
+            <div class="top_header col-md-12">
+
+                <div class="row">
+                    <div class="col-sm-4 col-md-0" style="font-size:large">CHÀO MỪNG BẠN ĐẾN VỚI CỬA HÀNG</div>
+
+                    <div class="col-sm-4 col-md-0" style="padding-left:250px">
+                        @Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" })
+                    </div>
+                    @{
+                        if (u != null)
+                        {
+                            <div class="col-sm-4 col-md-0">
+                                Xin chào : @u.Email
+                                &nbsp;
+                                <a style="color:red" href="/User/DangXuat"> ĐĂNG XUẤT</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-sm-4 col-md-0">
+                                <a style="color:white" href="/User/Dangky"> Đăng ký</a>
+                                &nbsp;
+                                <a style="color:white" href="/User/Dangnhap"> Đăng nhập</a>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+
+            </div>
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img class="navbar-brand" src="~/HinhanhSP/logo.jpg" width="50" height="50" style="padding:0" />
+                    @Html.ActionLink("ONL SHOE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <form class="form-inline" style="float:left">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                    </form>
+
+                </div>
+
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/Home/Index" title="trangchu">
+                                <span>TRANG CHỦ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Brand" title="thuonghieu">
+                                <span>THƯƠNG HIỆU</span>
+
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="/Home/Sale" title="sale">
+                                <span>SALE</span>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Home/Contact" title="LIENHE">
+                                <span>LIÊN HỆ</span>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a style="color:white"
+                               class="nav-link"
+                               href="@Url.Action("Index", "DonHangs")">ĐƠN HÀNG</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <a href="https://www.bitis.com.vn/" target="_blank"><img src="~/HinhanhSP/88-de-rue-logo3-1.png" /></a>
+
+                </td>
+                <td>
+                    <a href="https://ananas.vn/" target="_blank"><img src="~/HinhanhSP/thuong-hieu2.png" /></a>
+
+                </td>
+                <td>
+                    <a href="https://rienevan.com/" target="_blank"><img src="~/HinhanhSP/thuong-hieu3.png" /></a>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://bitas.com.vn/" target="_blank"><img src="~/HinhanhSP/thuong-hieu4.png" /></a>
+
+                </td>
+                <td>
+                    <a href="https://www.dolcegabbana.com/en/" target="_blank"><img src="~/HinhanhSP/thuong-hieu5.png" /></a>
+
+                </td>
+                <td>
+                    <a href="https://fearofgod.com/" target="_blank"><img src="~/HinhanhSP/thuong-hieu6.png" /></a>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://www.chanel.com/us/" target="_blank"><img src="~/HinhanhSP/thuong-hieu7.png" /></a>
+
+                </td>
+                <td>
+                    <a href="https://www.louisvuitton.com/" target="_blank"><img src="~/HinhanhSP/thuong-hieu8.png" /></a>
+
+                </td>
+                <td>
+                    <a href="https://www.dior.com/en_int" target="_blank"><img src="~/HinhanhSP/thuong-hieu9.png" /></a>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+</html>
